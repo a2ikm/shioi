@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Creating superuser"
+createuser -s shioi

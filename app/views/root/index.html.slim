@@ -10,7 +10,7 @@
   .col-md-10
     - @articles.each do |article|
       article.article
-        h1.article-title = article.name
+        h1.article-title = link_to article.name, article.url
         p.article-body = article.body.html_safe
         p.article-timestamp
           small = article.published_at

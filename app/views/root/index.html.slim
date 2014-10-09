@@ -1,0 +1,16 @@
+.row
+  .col-md-2
+    ul.nav.nav-pills.nav-stacked.feeds
+      li.active = link_to "All (#{@total_unreads_count})", root_path
+      - @subscriptions.each do |subscription|
+        li = link_to root_path(anchor: subscription.id) do
+          = subscription.feed.name
+          '  (#{subscription.unreads_count})
+  
+  .col-md-10
+    - @articles.each do |article|
+      article.article
+        h1.article-title = article.name
+        p.article-body = article.body.html_safe
+        p.article-timestamp
+          small = article.published_at

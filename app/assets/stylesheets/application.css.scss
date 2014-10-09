@@ -20,4 +20,26 @@ body {
   height: 100%;
 }
 
+.feeds {
+  position: fixed;
+}
 
+.article {
+  border-color: #dddddd;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  margin-bottom: 30px;
+  padding: 15px 25px;
+
+  .article-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .article-timestamp {
+    color: #555555;
+    margin-top: 30px;
+  }
+}

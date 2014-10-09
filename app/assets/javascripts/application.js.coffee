@@ -14,8 +14,9 @@ class Entries
 
   next: ->
     if @_cursor == null
-      @_oldCursor = @_cursor = 0
+      @_cursor = 0
       @_update()
+      @_oldCursor = 0
 
     else if @_cursor + 1 < @_length()
       @_oldCursor = @_cursor
@@ -24,8 +25,9 @@ class Entries
 
   previous: ->
     if @_cursor == null
-      @_oldCursor = @_cursor = 0
+      @_cursor = 0
       @_update()
+      @_oldCursor = 0
 
     else if @_cursor > 0
       @_oldCursor = @_cursor
@@ -33,8 +35,10 @@ class Entries
       @_update()
 
   _update: ->
-    $oldArticle = @_entryAt(@_oldCursor)
-    $oldArticle.removeClass("focused")
+    if @_oldCursor != null
+      $oldArticle = @_entryAt(@_oldCursor)
+      $oldArticle.removeClass("focused")
+      $oldArticle.addClass("read")
 
     $article = @_entryAt(@_cursor)
     $article.addClass("focused")

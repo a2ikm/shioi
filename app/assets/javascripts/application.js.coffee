@@ -7,7 +7,7 @@
 class Entries
   constructor: ->
     @_cursor = @_oldCursor = null
-    @query = $(".article")
+    @_query = $(".article")
 
     if @_length() > 0
       @_offset = @_entryAt(0).offset().top
@@ -63,19 +63,14 @@ class Entries
       $document.scrollTop(top)
 
   _length: ->
-    @query.length
+    @_query.length
 
   _entryAt: (index) ->
-    @query.eq(index)
+    @_query.eq(index)
 
-Actions =
-  selectNextEntry: -> window.entries.next()
-  selectPreviousEntry: -> window.entries.previous()
-  selectFirstEntry: -> window.entries.first()
-
-Mousetrap.bind "j", (e) -> Actions.selectNextEntry()
-Mousetrap.bind "k", (e) -> Actions.selectPreviousEntry()
-Mousetrap.bind "g g", (e) -> Actions.selectFirstEntry()
+Mousetrap.bind "j", (e) -> window.entries.next()
+Mousetrap.bind "k", (e) -> window.entries.previous()
+Mousetrap.bind "g g", (e) -> window.entries.first()
 
 $ ->
   window.entries = new Entries

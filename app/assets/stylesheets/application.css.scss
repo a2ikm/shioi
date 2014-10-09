@@ -32,14 +32,21 @@ body {
   margin-bottom: 30px;
   padding: 15px 25px;
 
-  .article-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-  }
-
-  .article-timestamp {
-    color: #555555;
-    margin-top: 30px;
+  &.focused {
+    border-color: #888888;
+    border-width: 3px;
+    padding: 13px 23px;
   }
 }
+
+.article-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.article-timestamp {
+  color: #555555;
+  margin-top: 30px;
+}
+

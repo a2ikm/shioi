@@ -12,6 +12,17 @@ class Entries
     if @_length() > 0
       @_offset = @_entryAt(0).offset().top
 
+  first: ->
+    if @_cursor == null
+      @_cursor = 0
+      @_update()
+      @_oldCursor = 0
+
+    else
+      @_oldCursor = @_cursor
+      @_cursor = 0
+      @_update()
+
   next: ->
     if @_cursor == null
       @_cursor = 0
@@ -60,9 +71,11 @@ class Entries
 Actions =
   selectNextEntry: -> window.entries.next()
   selectPreviousEntry: -> window.entries.previous()
+  selectFirstEntry: -> window.entries.first()
 
 Mousetrap.bind "j", (e) -> Actions.selectNextEntry()
 Mousetrap.bind "k", (e) -> Actions.selectPreviousEntry()
+Mousetrap.bind "g g", (e) -> Actions.selectFirstEntry()
 
 $ ->
   window.entries = new Entries

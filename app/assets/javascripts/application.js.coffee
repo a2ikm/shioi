@@ -23,18 +23,18 @@ class Entries
       @_update()
 
   _update: ->
-    oldArticle = @_entryAt(@_oldCursor)
-    oldArticle.removeClass("focused")
+    $oldArticle = @_entryAt(@_oldCursor)
+    $oldArticle.removeClass("focused")
 
-    article = @_entryAt(@_cursor)
-    article.addClass("focused")
+    $article = @_entryAt(@_cursor)
+    $article.addClass("focused")
 
     $document = $(document)
 
     if @_cursor == 0
       $document.scrollTop(0)
     else
-      top = $document.scrollTop() - oldArticle.offset().top + article.offset().top
+      top = $document.scrollTop() - $oldArticle.offset().top + $article.offset().top
       $document.scrollTop(top)
 
   _length: ->

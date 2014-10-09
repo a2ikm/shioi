@@ -10,6 +10,9 @@ class Entries
     @query = $(".article")
     @_update()
 
+    if @_length() > 0
+      @_offset = @_entryAt(0).offset().top
+
   next: ->
     if @_cursor + 1 < @_length()
       @_oldCursor = @_cursor
@@ -34,7 +37,7 @@ class Entries
     if @_cursor == 0
       $document.scrollTop(0)
     else
-      top = $document.scrollTop() - $oldArticle.offset().top + $article.offset().top
+      top = $article.offset().top - @_offset
       $document.scrollTop(top)
 
   _length: ->

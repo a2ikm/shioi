@@ -1,0 +1,13 @@
+{
+  "name": "shioi",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:a2ikm/shioi.git"
+  },
+  "devDependencies": {
+    "bower": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-bower-task": "*"
+  }
+}

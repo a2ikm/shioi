@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 gem 'pg'
 gem 'unicorn', require: false
+gem 'hashie'
+gem 'ffaker'
 
 # views and assets
 gem 'sass-rails', '~> 4.0.3'
@@ -50,7 +52,6 @@ group :test do
   gem 'rake_shared_context'
   gem 'database_rewinder'
   gem 'fabrication'
-  gem 'ffaker'
 end
 
 group :doc do

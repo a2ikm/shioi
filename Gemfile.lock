@@ -257,6 +257,7 @@ DEPENDENCIES
   ffaker
   guard-bundler
   guard-rspec
+  hashie
   hirb-unicode
   jquery-rails
   omniauth

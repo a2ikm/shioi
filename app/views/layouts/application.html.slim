@@ -8,23 +8,22 @@ html
     = csrf_meta_tags
     = yield :head
   body
-    .wrapper
-      nav.navbar.navbar-default.navbar-static-top role="navigation"
-        .container
-          .navbar-header
-            = link_to "shioi", "#", class: "navbar-brand"
-
-          .collapse.navbar-collapse
-            ul.nav.navbar-nav.navbar-left
-            ul.nav.navbar-nav.navbar-right
-
+    .navbar.navbar-default.navbar-fixed-top role="navigation"
       .container
-        - if flash[:notice].present?
-          .alert.alert-info
-            = flash[:notice]
+        .navbar-header
+          = link_to "shioi", "#", class: "navbar-brand"
 
-        - if flash[:alert].present?
-          .alert.alert-danger
-            = flash[:alert]
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-left
+          ul.nav.navbar-nav.navbar-right
 
-        = yield
+    .container
+      - if flash[:notice].present?
+        .alert.alert-info
+          = flash[:notice]
+
+      - if flash[:alert].present?
+        .alert.alert-danger
+          = flash[:alert]
+
+      = yield

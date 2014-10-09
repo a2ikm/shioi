@@ -29,11 +29,13 @@ class Entries
     article = @_entryAt(@_cursor)
     article.addClass("focused")
 
+    $document = $(document)
+
     if @_cursor == 0
-      $(document).scrollTop(0)
+      $document.scrollTop(0)
     else
-      top = article.offset().top - 10
-      $(document).scrollTop(top)
+      top = $document.scrollTop() - oldArticle.offset().top + article.offset().top
+      $document.scrollTop(top)
 
   _length: ->
     @query.length

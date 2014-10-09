@@ -6,21 +6,28 @@
 
 class Entries
   constructor: ->
-    @_cursor = @_oldCursor = 0
+    @_cursor = @_oldCursor = null
     @query = $(".article")
-    @_update()
 
     if @_length() > 0
       @_offset = @_entryAt(0).offset().top
 
   next: ->
-    if @_cursor + 1 < @_length()
+    if @_cursor == null
+      @_oldCursor = @_cursor = 0
+      @_update()
+
+    else if @_cursor + 1 < @_length()
       @_oldCursor = @_cursor
       @_cursor += 1
       @_update()
 
   previous: ->
-    if @_cursor > 0
+    if @_cursor == null
+      @_oldCursor = @_cursor = 0
+      @_update()
+
+    else if @_cursor > 0
       @_oldCursor = @_cursor
       @_cursor -= 1
       @_update()

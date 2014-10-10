@@ -1,26 +1,16 @@
 class RootController < ApplicationController
   def index
-    @total_unreads_count = 10
+    @feeds = Feed.all
 
-    @subscriptions = (1..10).map do |i|
-      Hashie::Mash.new({
-        unreads_count: rand(1..100),
-        feed: {
-          name: Faker::Lorem.word,
-          url: Faker::Internet.http_url, 
-        }
-      })
-    end
+    @entries = Entry.newer
+  end
 
-    @articles = (1..30).map do |i|
-      Hashie::Mash.new({
-        name: Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraphs(rand(1..5)).join("<br><br>"*rand(0..1)),
-        url: Faker::Internet.http_url,
-        read: true,
-        subscription: @subscriptions.sample,
-        published_at: i.days.ago,
-      })
-    end
+  def show
+    @feeds = Feed.all
+
+    @feed = Feed.find_by uid: params[:uid]
+    @entries = @feed.entries.newer
+
+    render "index"
   end
 end

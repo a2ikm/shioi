@@ -1,16 +1,16 @@
 .row
-  .col-md-2
+  .col-md-3
     ul.nav.nav-pills.nav-stacked.feeds
-      li.active = link_to "All (#{@total_unreads_count})", root_path
-      - @subscriptions.each do |subscription|
-        li = link_to root_path(anchor: subscription.id) do
-          = subscription.feed.name
-          '  (#{subscription.unreads_count})
+      = content_tag :li, class: (@feed.nil? ? "active" : nil) do
+        = link_to t(:all), root_path
+      - @feeds.each do |feed|
+        = content_tag :li, class: (@feed == feed ? "active" : nil) do
+          = link_to feed.title, reader_path(feed)
   
-  .col-md-10
-    - @articles.each do |article|
-      article.article
-        h1.article-title = link_to article.name, article.url
-        p.article-body = article.body.html_safe
-        p.article-timestamp
-          small = article.published_at
+  .col-md-9
+    - @entries.each do |entry|
+      article.entry
+        h1.entry-title = link_to entry.title, entry.url
+        p.entry-body = entry.body.html_safe
+        p.entry-timestamp
+          small = entry.created_at

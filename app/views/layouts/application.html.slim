@@ -16,6 +16,7 @@ html
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-left
           ul.nav.navbar-nav.navbar-right
+            li = link_to t(:new), new_feed_path
 
     .container
       - if flash[:notice].present?

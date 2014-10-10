@@ -12,15 +12,6 @@ class RootController < ApplicationController
       })
     end
 
-    @articles = (1..30).map do |i|
-      Hashie::Mash.new({
-        name: Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraphs(rand(1..5)).join("<br><br>"*rand(0..1)),
-        url: Faker::Internet.http_url,
-        read: true,
-        subscription: @subscriptions.sample,
-        published_at: i.days.ago,
-      })
-    end
+    @entries = Entry.newer
   end
 end

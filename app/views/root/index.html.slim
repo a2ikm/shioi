@@ -8,9 +8,9 @@
           '  (#{subscription.unreads_count})
   
   .col-md-10
-    - @articles.each do |article|
+    - @entries.each do |entry|
       article.article
-        h1.article-title = link_to article.name, article.url
-        p.article-body = article.body.html_safe
+        h1.article-title = link_to entry.title, entry.url
+        p.article-body = entry.body.html_safe
         p.article-timestamp
-          small = article.published_at
+          small = entry.created_at

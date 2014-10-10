@@ -18,6 +18,10 @@ class Feed < ActiveRecord::Base
     end
   end
 
+  def to_param
+    uid
+  end
+
   def fetch!
     feed = Feedjira::Feed.fetch_and_parse feed_url
 

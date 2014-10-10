@@ -2,8 +2,11 @@ class Feed < ActiveRecord::Base
   validates :title,     presence: true
   validates :url,       presence: true
   validates :feed_url,  presence: true
+  validates :uid,       presence: true
 
   has_many :entries,  inverse_of: :feed, dependent: :destroy
+
+  before_validation :set_uid
 
   def self.create_or_update!(feed_url)
     feed = Feedjira::Feed.fetch_and_parse feed_url
@@ -34,4 +37,10 @@ class Feed < ActiveRecord::Base
 
     self
   end
+
+  private
+
+    def set_uid
+      self.uid = UidGenerator.generate
+    end
 end

@@ -15,6 +15,8 @@ class Feed < ActiveRecord::Base
       record.title  = feed.title
       record.url    = feed.url
       record.save!
+
+      record.fetch!
     end
   end
 

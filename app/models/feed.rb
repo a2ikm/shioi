@@ -27,8 +27,8 @@ class Feed < ActiveRecord::Base
       entries.where(url: feed_entry.url).first_or_create! do |entry|
         entry.title = feed_entry.title
         entry.created_at = feed_entry.published.to_time
-        entry.updated_at = feed_entry.updated.to_time
-        entry.body = feed_entry.content
+        entry.updated_at = (feed_entry.updated || feed_entry.published).to_time
+        entry.body = feed_entry.content || feed_entry.summary
       end
     end
 

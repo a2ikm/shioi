@@ -2,11 +2,10 @@
   .col-md-3
     ul.nav.nav-pills.nav-stacked.feeds
       = content_tag :li, class: (@feed.nil? ? "active" : nil) do
-        = link_to "All (#{@total_unreads_count})", root_path
+        = link_to t(:all), root_path
       - @feeds.each do |feed|
         = content_tag :li, class: (@feed == feed ? "active" : nil) do
-          = link_to reader_path(feed) do
-            = feed.title
+          = link_to feed.title, reader_path(feed)
   
   .col-md-9
     - @entries.each do |entry|

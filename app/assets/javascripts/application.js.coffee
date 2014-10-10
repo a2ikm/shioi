@@ -7,7 +7,7 @@
 class Entries
   constructor: ->
     @_cursor = @_oldCursor = null
-    @_query = $(".article")
+    @_query = $(".entry")
 
     if @_length() > 0
       @_offset = @_entryAt(0).offset().top
@@ -47,19 +47,19 @@ class Entries
 
   _update: ->
     if @_oldCursor != null
-      $oldArticle = @_entryAt(@_oldCursor)
-      $oldArticle.removeClass("focused")
-      $oldArticle.addClass("read")
+      $oldEntry = @_entryAt(@_oldCursor)
+      $oldEntry.removeClass("focused")
+      $oldEntry.addClass("read")
 
-    $article = @_entryAt(@_cursor)
-    $article.addClass("focused")
+    $entry = @_entryAt(@_cursor)
+    $entry.addClass("focused")
 
     $document = $(document)
 
     if @_cursor == 0
       $document.scrollTop(0)
     else
-      top = $article.offset().top - @_offset
+      top = $entry.offset().top - @_offset
       $document.scrollTop(top)
 
   _length: ->

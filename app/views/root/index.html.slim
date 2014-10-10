@@ -10,7 +10,7 @@
   .col-md-9
     - @entries.each do |entry|
       article.entry
-        h1.entry-title = link_to entry.title, entry.url
+        h1.entry-title = link_to (entry.title || t(:no_title)), entry.url
         p.entry-body = entry.body.html_safe
         p.entry-timestamp
           small = entry.created_at

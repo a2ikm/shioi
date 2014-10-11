@@ -2,6 +2,8 @@ doctype html
 html
   head
     meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
     title shioi
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
@@ -14,7 +16,6 @@ html
           = link_to "shioi", "#", class: "navbar-brand"
 
         .collapse.navbar-collapse
-          ul.nav.navbar-nav.navbar-left
           ul.nav.navbar-nav.navbar-right
             li = link_to t(:new), new_feed_path
 

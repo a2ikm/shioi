@@ -18,6 +18,10 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 
+# pagination
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 # authentication
 gem 'omniauth'
 gem 'omniauth-twitter'

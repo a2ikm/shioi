@@ -15,6 +15,9 @@ A feed reader.
 ```
 git clone git@github.com:a2ikm/shioi.git
 cd shioi
+bundle install
+npm install
+grunt
 ./bin/bootstrap_postgres
 bundle exec rake db:create
 bundle exec rake db:migrate
